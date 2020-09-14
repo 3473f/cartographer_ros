@@ -186,6 +186,7 @@ class Node {
   ::ros::NodeHandle node_handle_;
   ::ros::Publisher submap_list_publisher_;
   ::ros::Publisher trajectory_node_list_publisher_;
+  ::ros::Publisher tracked_pose_in_map_publisher_;
   ::ros::Publisher landmark_poses_list_publisher_;
   ::ros::Publisher constraint_list_publisher_;
   // These ros::ServiceServers need to live for the lifetime of the node.

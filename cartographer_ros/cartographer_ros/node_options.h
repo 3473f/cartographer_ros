@@ -36,6 +36,8 @@ struct NodeOptions {
   double pose_publish_period_sec;
   double trajectory_publish_period_sec;
   bool use_pose_extrapolator = true;
+  bool publish_to_tf = true;
+  bool publish_tracked_pose_msg = true;
 };
 
 NodeOptions CreateNodeOptions(
