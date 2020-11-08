@@ -114,6 +114,13 @@ void SensorBridge::HandleLandmarkMessage(
   trajectory_builder_->AddSensorData(sensor_id, landmark_data);
 }
 
+void SensorBridge::HandleFixedFramePoseMessage(
+    const std::string& sensor_id, const sensor_msgs::PoseStamped::ConstPtr& msg) {
+  const carto::common::Time time = FromRos(msg->header.stamp);
+  trajectory_builder_->AddSensorData(
+      sensor_id, carto::sensor::FixedFramePoseData{time, ToRigid3d(msg->pose)};
+}
+
 std::unique_ptr<carto::sensor::ImuData> SensorBridge::ToImuData(
     const sensor_msgs::Imu::ConstPtr& msg) {
   CHECK_NE(msg->linear_acceleration_covariance[0], -1)
